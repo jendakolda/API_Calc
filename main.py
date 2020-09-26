@@ -24,9 +24,9 @@ class API_Calc(object):
     # Use a breakpoint in the code line below to debug your script.
     # Press Ctrl+F8 to toggle the breakpoint.
     set_main_window_size(800, 800)
-    set_theme('Dark 2')
+    set_theme('Light')
     themes = ["Dark", "Light", "Classic", "Dark 2", "Grey", "Dark Grey", "Cherry", "Purple", "Gold", "Red"]
-    add_combo("Themes", themes, default_value="Dark", callback=applyTheme)
+    add_combo("Themes", themes, default_value="Light", callback=applyTheme)
 
     add_slider_float("Font Size Multiplier", default_value=1.0, min_value=0.0, max_value=2.0,
                      callback=applyTextMultiplier)
