@@ -34,7 +34,7 @@ class Steam:
             set_value(self.input_txt[i], self.input_def[i])
 
     def retrieve_values(self, sender, data):
-        input_val = [get_data(self.input_txt[i]) for i, txt in enumerate(self.input_txt)]
+        input_val = [get_value(self.input_txt[i]) for i, txt in enumerate(self.input_txt)]
         print(input_val)
 
     @staticmethod
