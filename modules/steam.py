@@ -7,18 +7,19 @@ import modules.backend as be
 class Steam:
 
     def __init__(self, tab_parent):
+        # TODO transform output block to self.parameter
         self.parent = tab_parent
         self.input_txt = [
             "##valve_tag",
-            "kg / s, Mass flow rate of steam through the valve.##2widget1",
-            "K, Temperature of steam entering the valve.##2widget2",
-            "Pa, Upstream relieving pressure; set pressure + allowable overpressure + atm. pressure.##2widget3",
+            "kg / h, Mass flow rate of steam through the valve.##2widget1",
+            "°C, Temperature of steam entering the valve.##2widget2",
+            "bar a, Upstream relieving pressure; set pressure + allowable overpressure + atm. pressure.##2widget3",
             "[-], (Optional, default = 0.975) The effective discharge coefficient.##2widget4",
             "[-], (Optional, default = 1) Correction due to vapor backpressure.##2widget5",
             "[-], (Optional, default = 1) Combination correction factor"
             " for installation with a rupture disk upstream of the PRV,##2widget6",
         ]
-        self.input_def = ['PSV', 0, 273.15, 101325, 0.975, 1, 1]
+        self.input_def = ['PSV', 0, 0, 1.01325, 0.975, 1, 1]
         for i in range(len(self.input_txt)):
             add_data(self.input_txt[i], self.input_def[i])
 
@@ -36,9 +37,12 @@ class Steam:
             set_value(self.input_txt[i], self.input_def[i])
 
     def calculate(self, sender, data):
+        # TODO check the input data with popup window
         input_val = [get_value(self.input_txt[i]) for i, txt in enumerate(self.input_txt)]
-        area = be.steam_area(input_val[1:])
-        set_value('m2, Required Area.', area)
+        area, area_rounded, letter = be.steam_area(input_val[1:])
+        set_value('m2, Minimum Required Area.', area)
+        set_value('m2, Area rounded to API526 standard.', area_rounded)
+        set_value('Area expressed as API526 letter.', letter)
 
     @staticmethod
     def export_results(sender, data):
@@ -46,7 +50,7 @@ class Steam:
 
     def generate(self):
 
-        with tab(name='Steam##tab2', parent=self.parent, before='Liquid##tab3'):
+        with tab(name='Steam##tab2', parent=self.parent):
             with group('2heading'):
                 add_spacing(count=2)
                 add_text(
@@ -121,7 +125,17 @@ class Steam:
                 add_indent(offset=5)
                 add_text('A  =')
                 add_same_line(spacing=10)
-                add_input_text('m2, Required Area.', readonly=True,
-                               default_value='', width=75, tip='Required Area')
+                add_input_text('m2, Minimum Required Area.', readonly=True,
+                               default_value='', width=75, tip='Minimum Required Area.')
+                add_text('Ar =')
+                add_same_line(spacing=10)
+                add_input_text('m2, Area rounded to API526 standard.', readonly=True,
+                               default_value='', width=75, tip='Rounded acc. to API526')
+
+                add_text('API526 Letter =')
+                add_same_line(spacing=10)
+                add_input_text('Area expressed as API526 letter.', readonly=True,
+                               default_value='', width=75, tip='API526 letter')
+
                 unindent()
                 add_separator()

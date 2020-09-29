@@ -1,5 +1,4 @@
-# from dearpygui.core import *
-# from dearpygui.simple import *
+from modules.liquid import *
 from modules.steam import *
 
 
@@ -24,11 +23,7 @@ class Tabs:
     # with tab(name='Gas/Vapor##tab1'):
     #     add_text('tohle je tab 1')
 
-
-class Liquid:
-    with tab(name='Liquid##tab3', parent='tab_bar_1'):
-        add_text('tohle je tab 3')
-        #
+    #
         # with tab(name='Two-Phase##tab4'):
         #     add_text('tohle je tab 4')
         #
@@ -48,7 +43,7 @@ class GuiBuilder:
         Menu()
         Tabs()
         Steam('tab_bar_1').generate()
-        Liquid()
+        Liquid('tab_bar_1').generate()
 
     @staticmethod
     def run_gui():
