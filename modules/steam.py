@@ -1,6 +1,8 @@
 from dearpygui.core import *
 from dearpygui.simple import *
 
+import modules.backend as be
+
 
 class Steam:
 
@@ -33,9 +35,10 @@ class Steam:
         for i in range(len(self.input_txt)):
             set_value(self.input_txt[i], self.input_def[i])
 
-    def retrieve_values(self, sender, data):
+    def calculate(self, sender, data):
         input_val = [get_value(self.input_txt[i]) for i, txt in enumerate(self.input_txt)]
-        print(input_val)
+        area = be.steam_area(input_val[1:])
+        set_value('m2, Required Area.', area)
 
     @staticmethod
     def export_results(sender, data):
@@ -76,42 +79,49 @@ class Steam:
                 add_text('m  =')
                 add_same_line(spacing=10)
                 add_input_float(self.input_txt[1], default_value=self.input_def[1],
-                                width=75, tip='Mass flow to be relieved', on_enter=True)
+                                width=75, tip='Mass flow to be relieved')
 
                 add_text('T  =')
                 add_same_line(spacing=10)
                 add_input_float(self.input_txt[2],
-                                default_value=self.input_def[2], width=75, tip='Relieving Temperature', on_enter=True)
+                                default_value=self.input_def[2], width=75, tip='Relieving Temperature')
 
                 add_text('P1 =')
                 add_same_line(spacing=10)
                 add_input_float(self.input_txt[3],
-                                default_value=self.input_def[3], width=75, tip='Input pressure [Pa]', on_enter=True)
+                                default_value=self.input_def[3], width=75, tip='Input pressure [Pa]')
 
                 add_text('Kd =')
                 add_same_line(spacing=10)
                 add_input_float(self.input_txt[4],
-                                default_value=self.input_def[4], width=75, tip='Kd = (default = 0.975)', on_enter=True)
+                                default_value=self.input_def[4], width=75, tip='Kd = (default = 0.975)')
 
                 add_text('Kb =')
                 add_same_line(spacing=10)
                 add_input_float(self.input_txt[5],
-                                default_value=self.input_def[5], width=75, tip='Kb = (default = 1)', on_enter=True)
+                                default_value=self.input_def[5], width=75, tip='Kb = (default = 1)')
 
                 add_text('Kc =')
                 add_same_line(spacing=10)
                 add_input_float(self.input_txt[6],
-                                default_value=self.input_def[6], width=75, tip='Kc = (default = 1)', on_enter=True)
+                                default_value=self.input_def[6], width=75, tip='Kc = (default = 1)')
                 unindent()
                 add_separator()
 
-            with group('##2output_widgets', tip='Output data for Steam relieve calculation'):
+            with group('##2output_widgets'):
                 add_spacing(count=5)
 
                 add_indent(offset=20)
                 add_text('Sizing results:')
                 add_same_line(spacing=10)
-                # add_input_text("##valve_tag", uppercase=True, no_spaces=True, width=100)
+                add_button('Calculate!', callback=self.calculate, tip='Press to perform sizing calculations')
                 add_spacing(count=5)
                 unindent()
-                add_button('Calculate!', callback=self.retrieve_values)
+
+                add_indent(offset=5)
+                add_text('A  =')
+                add_same_line(spacing=10)
+                add_input_text('m2, Required Area.', readonly=True,
+                               default_value='', width=75, tip='Required Area')
+                unindent()
+                add_separator()
