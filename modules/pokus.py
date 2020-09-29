@@ -7,20 +7,25 @@ class CreateGui:
         self.width = 200
         self.height = 200
 
-    class Menu:
-
-        @staticmethod
-        def print_stuff(sender, data):
-            set_value('##output', 'nazdar')
-
-        add_button('Ahoj', callback=print_stuff)
-        add_label_text('##output')
-
     def make_gui(self):
         set_main_window_size(self.width, self.height)
         set_theme(self.theme)
-        CreateGui.Menu()
+        Menu()
+
+    @staticmethod
+    def run_gui():
         start_dearpygui()
 
 
-API = CreateGui().make_gui()
+class Menu:
+
+    def print_stuff(sender, data):
+        set_value('##output', 'nazdar')
+
+    add_button('Ahoj', callback=print_stuff)
+    add_label_text('##output')
+
+
+API = CreateGui()
+API.make_gui()
+API.run_gui()

@@ -1,5 +1,4 @@
 # This is a sample Python script.
-
 from modules import gui
 
 # Press Shift+F10 to execute it or replace it with your code.
@@ -9,5 +8,6 @@ from modules import gui
 if __name__ == '__main__':
     API = gui.GuiBuilder()
     API.make_gui()
+    API.run_gui()
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
