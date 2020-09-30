@@ -33,6 +33,7 @@ class Steam:
         delete_item(sender)
 
     def clear_fields(self, sender, data):
+        # TODO clear the output fields as well
         for i in range(len(self.input_txt)):
             set_value(self.input_txt[i], self.input_def[i])
 
