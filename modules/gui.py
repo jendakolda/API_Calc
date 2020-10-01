@@ -1,5 +1,7 @@
-from modules.liquid import *
-from modules.steam import *
+from modules.liquid import Liquid
+from modules.steam import Steam
+from dearpygui.core import *
+from dearpygui.simple import *
 
 
 class Menu:
@@ -35,7 +37,7 @@ class GuiBuilder:
     def __init__(self):
         self.theme = 'Light'
         self.width = 1000
-        self.height = 1000
+        self.height = 600
 
     def make_gui(self):
         set_main_window_size(self.width, self.height)

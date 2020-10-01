@@ -84,32 +84,32 @@ class Steam:
                 add_text('m  =')
                 add_same_line(spacing=10)
                 add_input_float(self.input_txt[1], default_value=self.input_def[1],
-                                width=75, tip='Mass flow to be relieved')
+                                width=100, tip='Mass flow to be relieved')
 
                 add_text('T  =')
                 add_same_line(spacing=10)
                 add_input_float(self.input_txt[2],
-                                default_value=self.input_def[2], width=75, tip='Relieving Temperature')
+                                default_value=self.input_def[2], width=100, tip='Relieving Temperature')
 
                 add_text('P1 =')
                 add_same_line(spacing=10)
                 add_input_float(self.input_txt[3],
-                                default_value=self.input_def[3], width=75, tip='Input pressure [Pa]')
+                                default_value=self.input_def[3], width=100, tip='Input pressure [Pa]')
 
                 add_text('Kd =')
                 add_same_line(spacing=10)
                 add_input_float(self.input_txt[4],
-                                default_value=self.input_def[4], width=75, tip='Kd = (default = 0.975)')
+                                default_value=self.input_def[4], width=100, tip='Kd = (default = 0.975)')
 
                 add_text('Kb =')
                 add_same_line(spacing=10)
                 add_input_float(self.input_txt[5],
-                                default_value=self.input_def[5], width=75, tip='Kb = (default = 1)')
+                                default_value=self.input_def[5], width=100, tip='Kb = (default = 1)')
 
                 add_text('Kc =')
                 add_same_line(spacing=10)
                 add_input_float(self.input_txt[6],
-                                default_value=self.input_def[6], width=75, tip='Kc = (default = 1)')
+                                default_value=self.input_def[6], width=100, tip='Kc = (default = 1)')
                 unindent()
                 add_separator()
 
