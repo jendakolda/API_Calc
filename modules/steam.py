@@ -84,7 +84,7 @@ class Steam:
                 add_text(self.input_var[0])
                 add_same_line(spacing=10)
                 add_input_text(self.input_txt[0], default_value=self.input_def[0], uppercase=True, no_spaces=True,
-                               width=100,tip=self.input_tip[0])
+                               width=100, tip=self.input_tip[0])
                 add_spacing(count=5)
                 unindent()
 
