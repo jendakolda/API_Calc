@@ -9,6 +9,7 @@ class Steam:
     def __init__(self, tab_parent):
         # TODO transform output block to self.parameter
         self.parent = tab_parent
+        self.input_var = ['Valve Tag', 'm  =', 'T  =', 'P1 =', 'Kd =', 'Kb =', 'Kc =', ]
         self.input_txt = [
             "##valve_tag",
             "kg / h, Mass flow rate of steam through the valve.##2widget1",
@@ -19,7 +20,16 @@ class Steam:
             "[-], (Optional, default = 1) Combination correction factor"
             " for installation with a rupture disk upstream of the PRV,##2widget6",
         ]
-        self.input_def = ['PSV', 0, 0, 1.01325, 0.975, 1, 1]
+        self.input_def = ['xx-PSV-0000', 0, 0, 1.01325, 0.975, 1, 1]
+        self.input_tip = ['Name of the valve',
+                          'Mass flow to be relieved',
+                          'Relieving Temperature',
+                          'Input pressure [Pa]',
+                          'Kd = (default = 0.975)',
+                          'Kb = (default = 1)',
+                          'Kc = (default = 1)',
+                          ]
+
         for i in range(len(self.input_txt)):
             add_data(self.input_txt[i], self.input_def[i])
 
@@ -54,9 +64,8 @@ class Steam:
         with tab(name='Steam##tab2', parent=self.parent):
             with group('2heading'):
                 add_spacing(count=2)
-                add_text(
-                    'Calculates required relief valve area for an API 520 valve passing a steam\n'
-                    ' - at either saturation or superheat but not partially condensed.')
+                add_text('Calculates required relief valve area for an API 520 valve passing a steam\n'
+                         ' - at either saturation or superheat but not partially condensed.')
                 add_spacing(count=2)
                 add_indent(offset=20)
                 add_button("Show Formula", callback=self.formula_show)
@@ -72,44 +81,18 @@ class Steam:
                 add_spacing(count=5)
 
                 add_indent(offset=20)
-                add_text('Valve Tag')
+                add_text(self.input_var[0])
                 add_same_line(spacing=10)
                 add_input_text(self.input_txt[0], default_value=self.input_def[0], uppercase=True, no_spaces=True,
-                               width=100,
-                               tip='Name of the valve')
+                               width=100,tip=self.input_tip[0])
                 add_spacing(count=5)
                 unindent()
 
                 add_indent(offset=5)
-                add_text('m  =')
-                add_same_line(spacing=10)
-                add_input_float(self.input_txt[1], default_value=self.input_def[1],
-                                width=100, tip='Mass flow to be relieved')
-
-                add_text('T  =')
-                add_same_line(spacing=10)
-                add_input_float(self.input_txt[2],
-                                default_value=self.input_def[2], width=100, tip='Relieving Temperature')
-
-                add_text('P1 =')
-                add_same_line(spacing=10)
-                add_input_float(self.input_txt[3],
-                                default_value=self.input_def[3], width=100, tip='Input pressure [Pa]')
-
-                add_text('Kd =')
-                add_same_line(spacing=10)
-                add_input_float(self.input_txt[4],
-                                default_value=self.input_def[4], width=100, tip='Kd = (default = 0.975)')
-
-                add_text('Kb =')
-                add_same_line(spacing=10)
-                add_input_float(self.input_txt[5],
-                                default_value=self.input_def[5], width=100, tip='Kb = (default = 1)')
-
-                add_text('Kc =')
-                add_same_line(spacing=10)
-                add_input_float(self.input_txt[6],
-                                default_value=self.input_def[6], width=100, tip='Kc = (default = 1)')
+                for i in range(1, len(self.input_var)):
+                    add_text(self.input_var[i])
+                    add_same_line(spacing=10)
+                    add_input_float(self.input_txt[i], default_value=self.input_def[i], width=100, tip=self.input_tip[i])
                 unindent()
                 add_separator()
 
