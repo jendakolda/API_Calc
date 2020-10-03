@@ -33,9 +33,12 @@ if __name__ == '__main__':
 #         return instance_method(instance_method.__self__, *args)
 #
 #     return cb
-#
-#
+
 # ent = Entity()
 # add_button("See me", callback=oop_callback(ent.do_something))
 # add_button("Watch me", callback=oop_callback(ent.do_another))
 # start_dearpygui()
+
+# to disable a widget
+# def disable_menu(item):
+# configure_item(item, enabled=False)

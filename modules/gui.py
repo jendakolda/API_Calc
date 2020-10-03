@@ -1,3 +1,4 @@
+from modules.gas import Gas
 from modules.liquid import Liquid
 from modules.steam import Steam
 from dearpygui.core import *
@@ -44,6 +45,7 @@ class GuiBuilder:
         set_theme(self.theme)
         Menu()
         Tabs()
+        Gas('tab_bar_1').generate()
         Steam('tab_bar_1').generate()
         Liquid('tab_bar_1').generate()
 

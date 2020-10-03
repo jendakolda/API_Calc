@@ -34,8 +34,7 @@ class Steam:
             add_data(self.input_txt[i], self.input_def[i])
 
     def formula_show(self, sender, data):
-        with window('Formula for Steam PRV Sizing', autosize=True, no_resize=True,
-                    no_move=False, no_title_bar=False, on_close=self.on_formula_close):
+        with window('Formula for Steam PRV Sizing', autosize=True, no_resize=True, on_close=self.on_formula_close):
             add_image('formula_steam', "pictures\API520_A_Steam.png")
 
     @staticmethod
@@ -84,7 +83,7 @@ class Steam:
                 add_text(self.input_var[0])
                 add_same_line(spacing=10)
                 add_input_text(self.input_txt[0], default_value=self.input_def[0], uppercase=True, no_spaces=True,
-                               width=100,tip=self.input_tip[0])
+                               width=100, tip=self.input_tip[0])
                 add_spacing(count=5)
                 unindent()
 
