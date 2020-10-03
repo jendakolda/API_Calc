@@ -63,8 +63,8 @@ class Steam:
         with tab(name='Steam##tab2', parent=self.parent):
             with group('2heading'):
                 add_spacing(count=2)
-                add_text('Calculates required relief valve area for an API 520 valve passing a gas ot vaport\n'
-                         ' - at either critical or subcritical conditions.')
+                add_text('Calculates required relief valve area for an API 520 valve passing a steam\n'
+                         ' - at either saturation or superheat but not partially condensed.')
                 add_spacing(count=2)
                 add_indent(offset=20)
                 add_button("Show Formula", callback=self.formula_show)
