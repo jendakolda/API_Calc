@@ -1,2 +1,2 @@
 # API_Calc
-Utility for Pressure Safety Valve sizin according to API RP 520
+Utility for Pressure Safety Valve sizing according to API RP 520

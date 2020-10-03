@@ -34,8 +34,7 @@ class Steam:
             add_data(self.input_txt[i], self.input_def[i])
 
     def formula_show(self, sender, data):
-        with window('Formula for Steam PRV Sizing', autosize=True, no_resize=True,
-                    no_move=False, no_title_bar=False, on_close=self.on_formula_close):
+        with window('Formula for Steam PRV Sizing', autosize=True, no_resize=True, on_close=self.on_formula_close):
             add_image('formula_steam', "pictures\API520_A_Steam.png")
 
     @staticmethod
@@ -64,8 +63,8 @@ class Steam:
         with tab(name='Steam##tab2', parent=self.parent):
             with group('2heading'):
                 add_spacing(count=2)
-                add_text('Calculates required relief valve area for an API 520 valve passing a steam\n'
-                         ' - at either saturation or superheat but not partially condensed.')
+                add_text('Calculates required relief valve area for an API 520 valve passing a gas ot vaport\n'
+                         ' - at either critical or subcritical conditions.')
                 add_spacing(count=2)
                 add_indent(offset=20)
                 add_button("Show Formula", callback=self.formula_show)
