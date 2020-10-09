@@ -35,6 +35,7 @@ class Gas:
                 add_spacing(count=2)
                 add_text('Calculates required relief valve area for an API 520 valve passing gas or vapor\n'
                          ' - at either critical or sub-critical conditions.')
+
                 add_spacing(count=2)
                 add_indent(offset=20)
                 add_button("Show Formula", callback=self.formula_show)

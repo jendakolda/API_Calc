@@ -34,6 +34,7 @@ class GuiBuilder:
 
     def make_gui(self):
         set_main_window_size(self.width, self.height)
+        set_main_window_title('PRV sizing acc. to API RP 520')
         set_theme(self.theme)
         Menu()
         Tabs()
