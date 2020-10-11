@@ -8,22 +8,30 @@ from modules.steam import Steam
 
 class Menu:
 
+    def __init__(self):
+        pass
+
     def apply_theme(sender, data):
         theme = get_value("##Themes")
         set_theme(theme)
 
+    def quit_program(sender, data):
+        quit()
+
     with menu_bar(name='Main Menu'):
         with menu(name='File'):
+            add_menu_item('New File')
+            add_menu_item('Load...')
+            add_separator()
             add_menu_item('Save')
-            add_menu_item('item 2')
+            add_menu_item('Save as...')
+            add_separator()
+            add_menu_item('Quit', callback=quit_program)
+
         with menu(name='Settings'):
             with menu('Select Theme'):
                 themes = ["Dark", "Light", "Classic", "Dark 2", "Grey", "Dark Grey", "Cherry", "Purple", "Gold", "Red"]
                 add_combo("##Themes", items=themes, default_value="Light", callback=apply_theme)
-
-
-class Tabs:
-    add_tab_bar(name='tab_bar_1')
 
 
 class GuiBuilder:
@@ -37,7 +45,7 @@ class GuiBuilder:
         set_main_window_title('PRV sizing acc. to API RP 520')
         set_theme(self.theme)
         Menu()
-        Tabs()
+        add_tab_bar(name='tab_bar_1')
         Gas('tab_bar_1').generate()
         Steam('tab_bar_1').generate()
         Liquid('tab_bar_1').generate()

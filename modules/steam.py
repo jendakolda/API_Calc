@@ -91,34 +91,37 @@ class Steam:
                 for i in range(1, len(self.input_var)):
                     add_text(self.input_var[i])
                     add_same_line(spacing=10)
-                    add_input_float(self.input_txt[i], default_value=self.input_def[i], width=100, tip=self.input_tip[i])
+                    add_input_float(self.input_txt[i], default_value=self.input_def[i], width=100,
+                                    tip=self.input_tip[i])
                 unindent()
-                add_separator()
+            add_separator()
 
-            with group('##2output_widgets'):
-                add_spacing(count=5)
+            add_spacing(count=5)
+            add_indent(offset=20)
 
-                add_indent(offset=20)
-                add_text('Sizing results:')
-                add_same_line(spacing=10)
-                add_button('Calculate!', callback=self.calculate, tip='Press to perform sizing calculations')
-                add_spacing(count=5)
-                unindent()
+            add_text('Sizing results:')
+            add_same_line(spacing=10)
+            add_button('Calculate!', callback=self.calculate, tip='Press to perform sizing calculations')
+            add_spacing(count=5)
+            unindent()
 
-                add_indent(offset=5)
+            add_indent(offset=5)
+            with group('##2output_varnames'):
                 add_text('A  =')
-                add_same_line(spacing=10)
+                add_spacing(count=2)
+                add_text('Ar =')
+                add_spacing(count=2)
+                add_text('API526 Letter =')
+            add_same_line(spacing=10)
+            with group('##2output_fields'):
                 add_input_text('m2, Minimum Required Area.', readonly=True,
                                default_value='', width=75, tip='Minimum Required Area.')
-                add_text('Ar =')
-                add_same_line(spacing=10)
+
                 add_input_text('m2, Area rounded to API526 standard.', readonly=True,
                                default_value='', width=75, tip='Rounded acc. to API526')
 
-                add_text('API526 Letter =')
-                add_same_line(spacing=10)
                 add_input_text('Area expressed as API526 letter.', readonly=True,
                                default_value='', width=75, tip='API526 letter')
 
-                unindent()
-                add_separator()
+            unindent()
+            add_separator()
