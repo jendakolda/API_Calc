@@ -1,2 +1,2 @@
-dearpygui~=0.4.3
+dearpygui~=0.5.10
 setuptools~=50.3.0

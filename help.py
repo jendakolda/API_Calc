@@ -1,6 +1,13 @@
-# show_demo()
-# show_documentation()
-# start_dearpygui()
+from dearpygui.core import *
+from dearpygui.simple import *
+from dearpygui.demo import *
+
+with window(name='win'):
+    show_documentation()
+
+    show_demo()
+
+start_dearpygui(primary_window='win')
 
 
 # class Entity:
@@ -26,16 +33,4 @@
 # add_button("Watch me", callback=oop_callback(ent.do_another))
 # start_dearpygui()
 
-i = 0
-star = 0
-while i < 5:
-    print('*')
-    star += 1
-    if i % 2 == 0:
-        print('**')
-        star += 2
-    if i > 2:
-        print('***')
-        star += 3
-    i = i + 1
-print(star)
+
