@@ -14,7 +14,7 @@ class Gas:
     def formula_show(self, sender, data):
         with window('Formula for Steam PRV Sizing', autosize=True, no_resize=True,
                     no_move=False, no_title_bar=False, on_close=self.on_formula_close):
-            add_image('formula_steam', "pictures\API520_A_Steam.png")
+            add_image('formula_gas', "pictures\API520_A_Steam.png")
 
     @staticmethod
     def on_formula_close(sender, data):
@@ -38,11 +38,11 @@ class Gas:
 
                 add_spacing(count=2)
                 add_indent(offset=20)
-                add_button("Show Formula", callback=self.formula_show)
+                add_button("Show Formula##gas", callback=self.formula_show)
                 add_same_line(spacing=20)
-                add_button("Clear All", callback=self.clear_fields, callback_data=self.input_txt)
+                add_button("Clear All##gas", callback=self.clear_fields, callback_data=self.input_txt)
                 add_same_line(spacing=20)
-                add_button("Export Results", callback=self.export_results)
+                add_button("Export Results##gas", callback=self.export_results)
                 unindent()
                 add_spacing(count=2)
                 add_separator()

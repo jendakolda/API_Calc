@@ -1,2 +1,1 @@
-dearpygui~=0.5.10
-setuptools~=50.3.0
+dearpygui>=0.6.183
